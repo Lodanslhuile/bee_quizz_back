@@ -1,10 +1,10 @@
-package com.julo.bee_quizzz;
+package com.adatechschool.beequizz;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BeeQuizzzApplicationTests {
+class BeequizzApplicationTests {
 
 	@Test
 	void contextLoads() {

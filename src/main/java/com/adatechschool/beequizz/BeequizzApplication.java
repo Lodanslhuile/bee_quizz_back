@@ -1,13 +1,13 @@
-package com.julo.bee_quizzz;
+package com.adatechschool.beequizz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BeeQuizzzApplication {
+public class BeequizzApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BeeQuizzzApplication.class, args);
+		SpringApplication.run(BeequizzApplication.class, args);
 	}
 
 }
