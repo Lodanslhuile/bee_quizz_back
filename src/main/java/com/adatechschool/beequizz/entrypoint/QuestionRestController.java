@@ -1,6 +1,6 @@
 package com.adatechschool.beequizz.entrypoint;
 
-import com.adatechschool.beequizz.model.Question;
+import com.adatechschool.beequizz.model.QuestionModel;
 import com.adatechschool.beequizz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,26 +16,26 @@ public class QuestionRestController {
 
     // Create new question
     @PostMapping
-    public Question createQuestion(@RequestBody Question question) {
-        return questionService.createQuestion(question);
+    public QuestionModel createQuestion(@RequestBody QuestionModel questionModel) {
+        return questionService.createQuestion(questionModel);
     }
 
     // Get all questions
     @GetMapping
-    public List<Question> getAllQuestions() {
+    public List<QuestionModel> getAllQuestions() {
         return questionService.getAllQuestions();
     }
 
     //Get question by ID
     @GetMapping("/{id}")
-    public Optional<Question> getQuestionById(@PathVariable Long id){
+    public Optional<QuestionModel> getQuestionById(@PathVariable Long id){
        return questionService.getQuestionById(id);
     }
 
     // Update question by ID
     @PutMapping("/{id}")
-    public Question updateQuestion(@PathVariable Long id, @RequestBody Question questionDetails){
-        return questionService.updateQuestion(id, questionDetails);
+    public QuestionModel updateQuestion(@PathVariable Long id, @RequestBody QuestionModel questionModelDetails){
+        return questionService.updateQuestion(id, questionModelDetails);
     }
 
     // Delete all questions

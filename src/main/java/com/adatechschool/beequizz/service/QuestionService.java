@@ -1,6 +1,6 @@
 package com.adatechschool.beequizz.service;
 
-import com.adatechschool.beequizz.model.Question;
+import com.adatechschool.beequizz.model.QuestionModel;
 import com.adatechschool.beequizz.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,31 +15,31 @@ public class QuestionService {
     private QuestionRepository questionRepository;
 
     // Create new question
-    public Question createQuestion(Question question){
+    public QuestionModel createQuestion(QuestionModel questionModel){
 
-        return questionRepository.save(question);
+        return questionRepository.save(questionModel);
     }
 
     // Get all questions
-    public List<Question> getAllQuestions(){
+    public List<QuestionModel> getAllQuestions(){
 
         return questionRepository.findAll();
     }
 
     // Get question by ID
-    public Optional<Question> getQuestionById(Long id) {
+    public Optional<QuestionModel> getQuestionById(Long id) {
 
         return questionRepository.findById(id);
     }
 
     // Update question
-    public Question updateQuestion(Long id, Question questionDetails){
-       Optional<Question> question = questionRepository.findById(id);
+    public QuestionModel updateQuestion(Long id, QuestionModel questionModelDetails){
+       Optional<QuestionModel> question = questionRepository.findById(id);
        if (question.isPresent()) {
-           Question existingQuestion = question.get();
-           existingQuestion.setTextQuestion(questionDetails.getTextQuestion());
-           existingQuestion.setDifficultyQuestion(questionDetails.getDifficultyQuestion());
-           return questionRepository.save(existingQuestion);
+           QuestionModel existingQuestionModel = question.get();
+           existingQuestionModel.setTextQuestion(questionModelDetails.getTextQuestion());
+           existingQuestionModel.setDifficultyQuestion(questionModelDetails.getDifficultyQuestion());
+           return questionRepository.save(existingQuestionModel);
        }
        return null;
     }
