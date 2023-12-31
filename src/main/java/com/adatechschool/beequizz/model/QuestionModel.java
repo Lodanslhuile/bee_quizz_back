@@ -2,6 +2,7 @@ package com.adatechschool.beequizz.model;
 
 import jakarta.persistence.*;
 
+// This model is also an entity which means that it is also used for persistent data stored in the database.
 @Entity
 @Table(name = "tb_questions", schema = "quizz")
 public class QuestionModel {
