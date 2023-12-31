@@ -7,6 +7,6 @@ public class TestController implements TestImplementation {
     @Override
     public String testImplementation()
     {
-        return "ok2";
+        return "ok super 2";
     }
 }
