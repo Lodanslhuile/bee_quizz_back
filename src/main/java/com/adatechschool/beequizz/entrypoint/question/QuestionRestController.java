@@ -1,7 +1,8 @@
-package com.adatechschool.beequizz.entrypoint;
+package com.adatechschool.beequizz.entrypoint.question;
 
-import com.adatechschool.beequizz.model.QuestionModel;
-import com.adatechschool.beequizz.service.QuestionServiceImpl;
+import com.adatechschool.beequizz.core.question.Question;
+import com.adatechschool.beequizz.dataProvider.question.model.QuestionModel;
+import com.adatechschool.beequizz.core.question.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,42 +13,42 @@ import java.util.Optional;
 @RequestMapping("/questions")
 public class QuestionRestController {
     @Autowired
-    private QuestionServiceImpl questionServiceImpl;
+    private QuestionService questionService;
 
     // Create new question
     @PostMapping
     public QuestionModel createQuestion(@RequestBody QuestionModel questionModel) {
-        return questionServiceImpl.createQuestion(questionModel);
+        return questionService.createQuestion(questionModel);
     }
 
     // Get all questions
     @GetMapping
-    public List<QuestionModel> getAllQuestions() {
-        return questionServiceImpl.getAllQuestions();
+    public List<Question> getAllQuestions() {
+        return questionService.getAllQuestions();
     }
 
     //Get question by ID
     @GetMapping("/{id}")
     public Optional<QuestionModel> getQuestionById(@PathVariable Long id) {
-        return questionServiceImpl.getQuestionById(id);
+        return questionService.getQuestionById(id);
     }
 
     // Update question by ID
     @PutMapping("/{id}")
     public QuestionModel updateQuestion(@PathVariable Long id, @RequestBody QuestionModel questionModelDetails) {
-        return questionServiceImpl.updateQuestion(id, questionModelDetails);
+        return questionService.updateQuestion(id, questionModelDetails);
     }
 
     // Delete all questions
     @DeleteMapping
     public String deleteAllQuestions() {
-        questionServiceImpl.deleteAllQuestions();
+        questionService.deleteAllQuestions();
         return "All questions have been deleted successfully.";
     }
 
     // Delete question by ID
     @DeleteMapping("/{id}")
     public void deleteQuestion(@PathVariable Long id) {
-        questionServiceImpl.deleteQuestion(id);
+        questionService.deleteQuestion(id);
     }
 }
