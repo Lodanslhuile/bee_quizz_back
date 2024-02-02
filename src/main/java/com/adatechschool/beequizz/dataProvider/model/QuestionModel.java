@@ -1,4 +1,4 @@
-package com.adatechschool.beequizz.model;
+package com.adatechschool.beequizz.dataProvider.model;
 
 import jakarta.persistence.*;
 

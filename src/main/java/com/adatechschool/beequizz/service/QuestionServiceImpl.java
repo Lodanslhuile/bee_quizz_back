@@ -1,8 +1,7 @@
 package com.adatechschool.beequizz.service;
 
-import com.adatechschool.beequizz.model.QuestionModel;
-import com.adatechschool.beequizz.repository.QuestionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.adatechschool.beequizz.dataProvider.model.QuestionModel;
+import com.adatechschool.beequizz.dataProvider.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 // This class allows us to treat the business logic related to questions
 public class QuestionServiceImpl implements QuestionServiceInterface {
-    @Autowired
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
+
+    public QuestionServiceImpl(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
 
     // Create new question
     public QuestionModel createQuestion(QuestionModel questionModel) {

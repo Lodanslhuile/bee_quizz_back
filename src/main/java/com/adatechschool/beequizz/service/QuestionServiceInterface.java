@@ -1,6 +1,6 @@
 package com.adatechschool.beequizz.service;
 
-import com.adatechschool.beequizz.model.QuestionModel;
+import com.adatechschool.beequizz.dataProvider.model.QuestionModel;
 
 import java.util.List;
 import java.util.Optional;
