@@ -15,6 +15,9 @@ public class QuestionModel {
     private Long idQuestion;
     private String textQuestion;
     private Integer difficultyQuestion;
+    @Column(name = "id_chapter")
+    private Integer chapterId;
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<AnswerModel> answers;
@@ -52,5 +55,9 @@ public class QuestionModel {
 
     public void setAnswers(List<AnswerModel> answers) {
         this.answers = answers;
+    }
+
+    public Integer getChapterId() {
+        return chapterId;
     }
 }
