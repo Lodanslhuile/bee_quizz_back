@@ -1,4 +1,4 @@
-package com.adatechschool.beequizz.dataProvider.question.model;
+package com.adatechschool.beequizz.dataProvider.question;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

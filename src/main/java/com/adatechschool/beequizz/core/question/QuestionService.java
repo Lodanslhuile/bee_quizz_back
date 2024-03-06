@@ -1,9 +1,8 @@
 package com.adatechschool.beequizz.core.question;
 
-import com.adatechschool.beequizz.dataProvider.question.QuestionRepositoryService;
-import com.adatechschool.beequizz.dataProvider.question.model.QuestionModel;
+import com.adatechschool.beequizz.dataProvider.question.QuestionModel;
 import com.adatechschool.beequizz.dataProvider.question.QuestionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.adatechschool.beequizz.dataProvider.question.QuestionRepositoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +11,14 @@ import java.util.Optional;
 @Service
 // This class allows us to treat the business logic related to questions
 public class QuestionService {
-    @Autowired
-    private QuestionRepository questionRepository;
-    @Autowired
-    private QuestionRepositoryService questionRepositoryService;
+
+    private final QuestionRepository questionRepository;
+    private final QuestionRepositoryService questionRepositoryService;
+
+    public QuestionService(QuestionRepository questionRepository, QuestionRepositoryService questionRepositoryService) {
+        this.questionRepository = questionRepository;
+        this.questionRepositoryService = questionRepositoryService;
+    }
 
     // Create new question
     public QuestionModel createQuestion(QuestionModel questionModel) {
@@ -47,15 +50,4 @@ public class QuestionService {
         return null;
     }
 
-    // Delete all questions
-    public void deleteAllQuestions() {
-
-        questionRepository.deleteAll();
-    }
-
-    // Delete question
-    public void deleteQuestion(Long id) {
-
-        questionRepository.deleteById(id);
-    }
 }

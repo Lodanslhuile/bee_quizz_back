@@ -2,6 +2,7 @@ package com.adatechschool.beequizz.core.question;
 
 import java.util.List;
 
+// cei est une entité
 public class Question {
     private Long idQuestion;
     private String textQuestion;

@@ -1,8 +1,8 @@
 package com.adatechschool.beequizz.entrypoint.question;
 
 import com.adatechschool.beequizz.core.question.Question;
-import com.adatechschool.beequizz.dataProvider.question.model.QuestionModel;
 import com.adatechschool.beequizz.core.question.QuestionService;
+import com.adatechschool.beequizz.dataProvider.question.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +21,10 @@ public class QuestionRestController {
         return questionService.createQuestion(questionModel);
     }
 
-    // Get all questions
+    // Notre requete arrive ici j'aurai du appeler un connecteur et non pas mon service en direct.
+    // Get all questions and related answers
     @GetMapping
-    public List<Question> getAllQuestions() {
+    public List<Question> getAllQuestionsAndRelatedAnswers() {
         return questionService.getAllQuestions();
     }
 
@@ -37,18 +38,5 @@ public class QuestionRestController {
     @PutMapping("/{id}")
     public QuestionModel updateQuestion(@PathVariable Long id, @RequestBody QuestionModel questionModelDetails) {
         return questionService.updateQuestion(id, questionModelDetails);
-    }
-
-    // Delete all questions
-    @DeleteMapping
-    public String deleteAllQuestions() {
-        questionService.deleteAllQuestions();
-        return "All questions have been deleted successfully.";
-    }
-
-    // Delete question by ID
-    @DeleteMapping("/{id}")
-    public void deleteQuestion(@PathVariable Long id) {
-        questionService.deleteQuestion(id);
     }
 }
