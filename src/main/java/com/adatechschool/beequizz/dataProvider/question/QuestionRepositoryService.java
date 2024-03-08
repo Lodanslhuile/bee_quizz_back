@@ -22,6 +22,5 @@ public class QuestionRepositoryService implements GetQuestionConnector {
     public List<Question> getQuestions(Integer chapterId, Integer difficulty) {
         List<QuestionModel> questionModels = questionRepository.findByChapterIdAndDifficultyQuestion(chapterId, difficulty);
         return questionMapper.mapToQuestion(questionModels);
-
     }
 }
