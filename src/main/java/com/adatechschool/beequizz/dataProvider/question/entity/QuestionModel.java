@@ -1,6 +1,9 @@
-package com.adatechschool.beequizz.model;
+package com.adatechschool.beequizz.dataProvider.question.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // This model is also an entity which means that it is also used for persistent data stored in the database.
 @Entity
@@ -12,14 +15,22 @@ public class QuestionModel {
     private Long idQuestion;
     private String textQuestion;
     private Integer difficultyQuestion;
+    @Column(name = "id_chapter")
+    private Integer chapterId;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<AnswerModel> answers;
+
+    public QuestionModel() {
+    }
 
     public Long getIdQuestion() {
         return idQuestion;
     }
 
-    //Constructors, Getters and Setters
-    public void setIdQuestion(Long id) {
-        this.idQuestion = id;
+    public void setIdQuestion(Long idQuestion) {
+        this.idQuestion = idQuestion;
     }
 
     public String getTextQuestion() {
@@ -36,5 +47,17 @@ public class QuestionModel {
 
     public void setDifficultyQuestion(Integer difficultyQuestion) {
         this.difficultyQuestion = difficultyQuestion;
+    }
+
+    public List<AnswerModel> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<AnswerModel> answers) {
+        this.answers = answers;
+    }
+
+    public Integer getChapterId() {
+        return chapterId;
     }
 }
